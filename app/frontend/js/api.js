@@ -1,4 +1,4 @@
-const BASE = '';
+const BASE = (typeof window !== 'undefined' && window.__API_BASE__) || '';
 
 // Backward-compat helpers used by legacy views
 export async function apiGet(path) { return apiFetch(path); }
