@@ -1,10 +1,13 @@
 services:
   backend:
-    image: ${BACKEND_IMAGE:-ghcr.io/edumgt/investment-analysis-backend:latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${BACKEND_IMAGE:-ai-quant-8th-advisor-lab-backend:latest}
     container_name: investment_backend
     restart: unless-stopped
     ports:
-      - "8801:8000"
+      - "8000:8000"
     env_file:
       - app/backend/.env
     environment:
