@@ -172,7 +172,7 @@ jobs:
 
       - name: Health check
         run: |
-          ssh -i ~/.ssh/deploy_key "$SSH_USER@$SSH_HOST" "curl -sf http://localhost:8801/api/health"
+          ssh -i ~/.ssh/deploy_key "$SSH_USER@$SSH_HOST" "curl -sf http://localhost:8801/api/health && curl -sf http://localhost:80/api/health"
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
