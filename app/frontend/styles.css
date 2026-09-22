@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   EDUMGT 주식상식 웹앱 — Global Styles
+   금융상식 랩 — Global Styles
    Font: Pretendard (Korean), -apple-system fallback
 ═══════════════════════════════════════════════════════ */
 
@@ -10,7 +10,7 @@
   --surface-hover:  #f0f7ff;
   --text:           #1a1a1a;
   --text-muted:     #555555;
-  --text-subtle:    #8a8a8a;
+  --text-subtle:    #767676; /* AA 대비 확보 (기존 #8a8a8a → 4.5:1 이상) */
   --border:         #e0e0e0;
   --border-strong:  #bdbdbd;
   --primary:        #0078d4;
@@ -31,7 +31,7 @@
   --shadow-sm:      0 1px 4px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
   --shadow:         0 4px 16px rgba(0,0,0,.10);
   --shadow-lg:      0 12px 40px rgba(0,0,0,.14);
-  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
 }
 
 /* 한글 기본 폰트 크기 17px 이상 */
@@ -47,6 +47,7 @@ html, body {
   word-break: keep-all;
   word-wrap: break-word;
   font-feature-settings: "kern" 1, "liga" 1;
+  letter-spacing: -0.01em; /* 한글 자간 절제 */
 }
 button, input, select, textarea { font: inherit; font-weight: 500; }
 button { cursor: pointer; border: none; background: none; }
@@ -57,7 +58,7 @@ img { max-width: 100%; }
 .apexcharts-text, .apexcharts-legend-text,
 .apexcharts-tooltip, .apexcharts-xaxis-label,
 .apexcharts-yaxis-label {
-  font-family: "Pretendard", -apple-system, "Malgun Gothic", sans-serif !important;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif !important;
 }
 .apexcharts-canvas { background: #fff !important; }
 
@@ -110,7 +111,6 @@ img { max-width: 100%; }
 .gnb button:hover { color: #0f172a; background: #e2e8f0; border-radius: 6px; }
 .topbar-toggle {
   display: inline-flex;
-
   width: 36px; height: 36px;
   align-items: center; justify-content: center;
   border-radius: var(--radius-sm);
@@ -343,7 +343,6 @@ img { max-width: 100%; }
 }
 
 /* section header (collapsible) */
-.nav-section { }
 .nav-section-hdr {
   display: flex; align-items: center; justify-content: space-between;
   width: 100%; padding: 9px 14px 9px 16px;

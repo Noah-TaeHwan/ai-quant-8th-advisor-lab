@@ -14,3 +14,8 @@ play**/
 **/*.zip
 *.tar
 *.gz
+
+# LEAN 데이터 다운로드 과정 파일 (리포트·summary·orders 제외, 신규 생성분만 차단)
+data-monitor-report-*.json
+failed-data-requests-*.txt
+succeeded-data-requests-*.txt
