@@ -4,10 +4,11 @@ services:
       context: .
       dockerfile: Dockerfile
     image: ${BACKEND_IMAGE:-ai-quant-8th-advisor-lab-backend:latest}
-    container_name: investment_backend
+    container_name: investment_prod_backend
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "8801:8000"
+      - "80:8000"
     env_file:
       - app/backend/.env
     environment:
@@ -24,48 +25,48 @@ services:
       - qdrant
       - meilisearch
     networks:
-      - investment-net
+      - investment-prod-net
 
   mongo:
     image: mongo:7
-    container_name: investment_mongo
+    container_name: investment_prod_mongo
     restart: unless-stopped
     volumes:
-      - investment_mongo_data:/data/db
+      - investment_prod_mongo_data:/data/db
     networks:
-      - investment-net
+      - investment-prod-net
 
   qdrant:
     image: qdrant/qdrant:latest
-    container_name: investment_qdrant
+    container_name: investment_prod_qdrant
     restart: unless-stopped
     volumes:
-      - investment_qdrant_data:/qdrant/storage
+      - investment_prod_qdrant_data:/qdrant/storage
     networks:
-      - investment-net
+      - investment-prod-net
 
   meilisearch:
     image: getmeili/meilisearch:v1.15.2
-    container_name: investment_meilisearch
+    container_name: investment_prod_meilisearch
     restart: unless-stopped
     environment:
       MEILI_ENV: production
       MEILI_MASTER_KEY: ${MEILI_MASTER_KEY:-local-development-search-key-change-me}
     volumes:
-      - investment_meilisearch_data:/meili_data
+      - investment_prod_meilisearch_data:/meili_data
     healthcheck:
       test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:7700/health >/dev/null 2>&1"]
       interval: 10s
       timeout: 5s
       retries: 12
     networks:
-      - investment-net
+      - investment-prod-net
 
 networks:
-  investment-net:
+  investment-prod-net:
     driver: bridge
 
 volumes:
-  investment_mongo_data:
-  investment_qdrant_data:
-  investment_meilisearch_data:
+  investment_prod_mongo_data:
+  investment_prod_qdrant_data:
+  investment_prod_meilisearch_data:
