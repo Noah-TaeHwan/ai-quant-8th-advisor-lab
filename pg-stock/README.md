@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | Docker Engine / Docker Compose v2 | 컨테이너와 named volume 오케스트레이션 | 로컬·서버 |
 | `postgres:18.6` | PostgreSQL 서버 런타임 (원본 백업과 같은 메이저/마이너 버전) | Docker Hub 공개 Official Image |
-| `<DOCKERHUB_ID>/pg-stock-data-seed:2026-09-04` | `pg_stock_data` 백업 아카이브만 포함하는 초기화 이미지 | Docker Hub Private (본인 ID로 교체) |
+| `noahtaehwan/pg-stock-data-seed:2026-09-04` | `pg_stock_data` 백업 아카이브만 포함하는 초기화 이미지 | Docker Hub Private |
 | `pg_stock_data` | PostgreSQL 물리 데이터 디렉터리 | Docker named volume |
 | `.env` | 포트와 접속 환경 변수 | 서버 로컬 전용 |
 
@@ -33,15 +33,15 @@ cp .env.example .env
 
 ## data-seed 이미지 빌드 및 게시
 
-저장소 루트에서 실행한다. 데이터가 들어 있으므로 `<DOCKERHUB_ID>/pg-stock-data-seed`는 반드시 Private으로 유지한다 (`<DOCKERHUB_ID>`는 본인의 Docker Hub ID로 교체).
+저장소 루트에서 실행한다. 데이터가 들어 있으므로 `noahtaehwan/pg-stock-data-seed`는 반드시 Private으로 유지한다.
 
 ```bash
 docker build \
   -f pg-stock/Dockerfile.seed \
-  -t <DOCKERHUB_ID>/pg-stock-data-seed:2026-09-04 \
+  -t noahtaehwan/pg-stock-data-seed:2026-09-04 \
   .
 
-docker push <DOCKERHUB_ID>/pg-stock-data-seed:2026-09-04
+docker push noahtaehwan/pg-stock-data-seed:2026-09-04
 ```
 
 ## 실행
