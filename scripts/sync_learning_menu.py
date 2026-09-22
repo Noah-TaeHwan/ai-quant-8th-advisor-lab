@@ -17,19 +17,18 @@ DOCS_DIR = ROOT / "docs"
 INDEX_HTML = ROOT / "app" / "frontend" / "index.html"
 OUT_MODULE = ROOT / "app" / "frontend" / "js" / "data" / "learnDocs.js"
 LEARN_DOCS = (
-    ("03", "주식 1"),
-    ("05", "주식 2"),
-    ("04", "주식 3"),
-    ("06", "주식 4"),
-    ("07", "주식 5"),
-    ("08", "금융상품 이해"),
-    ("09", "자산배분 방법론"),
-    ("12", "투자분석 실무"),
+    ("10", "1단원 법인과 회사 구조"),
+    ("11", "2단원 거시경제와 주식시장"),
+    ("03", "3단원 주식 1"),
+    ("05", "4단원 주식 2"),
+    ("04", "5단원 주식 3"),
+    ("06", "6단원 주식 4"),
+    ("07", "7단원 주식 5"),
+    ("08", "8단원 금융상품 이해"),
+    ("09", "9단원 자산배분 방법론"),
+    ("12", "10단원 투자분석 실무"),
 )
-REVIEW_DOCS = (
-    ("10", "법인과 회사 구조"),
-    ("11", "거시경제와 주식시장"),
-)
+REVIEW_DOCS = ()
 
 
 def title_for(path: Path) -> str:
@@ -75,10 +74,9 @@ def main() -> None:
     )
 
     source = INDEX_HTML.read_text(encoding="utf-8")
-    replacements = {
-        "learn": menu_html(learn_docs),
-        "review": menu_html(review_docs),
-    }
+    replacements = {"learn": menu_html(learn_docs)}
+    if review_docs:
+        replacements["review"] = menu_html(review_docs)
     for section_id, rows in replacements.items():
         replacement = f'<div class="nav-children" id="nav-{section_id}">\n{rows}\n          </div>'
         source, count = re.subn(

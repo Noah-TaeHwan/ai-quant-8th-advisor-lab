@@ -400,7 +400,6 @@ function navigate(view) {
   const _portfolioViews = ['portfolio', 'portfolio-combination', 'portfolio-guide', 'portfolio-simulation'];
   const _aiViews = ['dart-financial-analysis','dart-company-search','tax-accounting'];
   const activeSections = [];
-  if (['learn-10-1', 'learn-10-2', 'learn-10-3', 'learn-11'].includes(view)) activeSections.push('review');
   else if (view?.startsWith('learn-')) activeSections.push('learn');
   if (view?.startsWith('quiz-') || view === 'vocabulary-exam') activeSections.push('quiz');
   if (['server-resources', 'world-markets', 'asset-classes', 'today-gainers', 'today-sobujang', 'volume-cloud', 'sector-cloud', 'global-capital-map'].includes(view)) activeSections.push('visualization');
